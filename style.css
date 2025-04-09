@@ -5,8 +5,21 @@ main {
     max-width: 100%;
 }
 
+h1 {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+p {
+    font-size: 0.75em;
+}
+
 img {
-    width: 10em;
+    width: 5em;
 }
 
 /* Navigation setting */
@@ -28,7 +41,7 @@ header {
 }
 
 header {
-    height: 20%;
+    height: 75px;
 }
 
 .navbar {
@@ -40,9 +53,81 @@ header {
 
 .navbar li {
     margin: 0 1rem;
+    font-size: 0.75em;
 }
 
 .profile {
     width: 60%;
-    border-radius: 50%;
+    border-radius: 100%;
+}
+
+
+/* Title */
+#title {
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#title div {
+    width: 50%;
+    margin-left: 20px;
+}
+
+#title figure {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#title img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* Gallery */
+#gallery {
+    padding: 2rem 0;
+    height: 300px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.scroll-button {
+    background-color: hotpink;
+    width: 50px;
+    height: 50px;
+}
+
+#album-gal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80%;
+    justify-content: space-around;
+    /* width: 75%; */
+}
+
+#album-gal div {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+#album-gal figure {
+    background-color: blueviolet;
+    width: 30%;
+    height: 100%;
 }
