@@ -1,0 +1,48 @@
+body,
+header,
+main {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+img {
+    width: 10em;
+}
+
+/* Navigation setting */
+.navbar ul,
+header {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+#photo-profil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5%;
+    width: 15%;
+}
+
+header {
+    height: 20%;
+}
+
+.navbar {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5% 10%;
+}
+
+.navbar li {
+    margin: 0 1rem;
+}
+
+.profile {
+    width: 60%;
+    border-radius: 50%;
+}

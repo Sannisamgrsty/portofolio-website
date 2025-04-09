@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
     <title>My Journey</title>
 </head>
 
 <body>
-    <header>
-        <nav>
+    <header class="header">
+        <nav class="navbar">
             <ul>
                 <li>About</li>
                 <li>Gallery</li>
@@ -16,7 +18,9 @@
                 <li>Message</li>
             </ul>
         </nav>
-        <img src="./image/profil-1.jpg" alt="my-photos">
+        <figure id="photo-profil">
+            <img class="profile" src="./image/profil-1.jpg" alt="my-photos">
+        </figure>
     </header>
 
     <main>
@@ -31,18 +35,26 @@
         </section>
         <section>
             <h2>Gallery</h2>
-            <figure>
-                <img id="album-image-1" src="./image/image-1.jpg" alt="Album image">
-                <figcaption></figcaption>
-            </figure>
-            <figure>
-                <img id="album-image-2" src="./image/image-2.jpg" alt="Album image">
-                <figcaption></figcaption>
-            </figure>
-            <figure>
-                <img id="album-image-3" src="./image/image-3.jpg" alt="Album image">
-                <figcaption></figcaption>
-            </figure>
+            <div class="scroll-button" id="previous-button">
+                <div class="previous"></div>
+            </div>
+            <div>
+                <figure>
+                    <img id="album-image-1" src="./image/image-1.jpg" alt="Album image">
+                    <figcaption></figcaption>
+                </figure>
+                <figure>
+                    <img id="album-image-2" src="./image/image-2.jpg" alt="Album image">
+                    <figcaption></figcaption>
+                </figure>
+                <figure>
+                    <img id="album-image-3" src="./image/image-3.jpg" alt="Album image">
+                    <figcaption></figcaption>
+                </figure>
+            </div>
+            <div class="scroll-button" id="next-button">
+                <div class="previous"></div>
+            </div>
         </section>
     </main>
 
