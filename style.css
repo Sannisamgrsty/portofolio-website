@@ -118,8 +118,8 @@ header {
     /* width: 75%; */
 }
 
+/* The code is moved on album transition => container-1 and container-2 */
 #album-gal div {
-    display: flex;
     flex-direction: row;
     width: 70%;
     height: 100%;
@@ -130,4 +130,13 @@ header {
     background-color: blueviolet;
     width: 30%;
     height: 100%;
+}
+
+/* Album container transition */
+#container-1 {
+    display: none;
+}
+
+#container-2 {
+    display: flex;
 }
