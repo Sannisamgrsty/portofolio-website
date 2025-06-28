@@ -39,7 +39,7 @@ let photos = [
         'comment': 'The mesmerizing sea (Taken by mar\'ah)'
     }
 ] // Can be changed or added, It's consist the name of the file photo and the comments from all the photo that stored
-let figureNumber = 3; // Can be changed based on how much figure we want to show in the display
+let figureNumber = 2; // Can be changed based on how much figure we want to show in the display
 
 // DOM Selector
 // It's used for selecting the instances like html element, class, or id
@@ -47,6 +47,10 @@ const previousButton = document.getElementById("previous-button");
 const nextButton = document.getElementById("next-button");
 const h2 = document.querySelector("h2");
 const h1 = document.querySelector("h1");
+
+// Select the div that element sibling next to previous button
+// const albumContainer = previousButton.nextElementSibling; -> change to selector by id
+const albumContainer = document.getElementById("album-container");
 
 // GLOBAL VARIABLE
 // It's used for save the container core data like data length, container length, container data iteration array etc.
@@ -57,10 +61,13 @@ const containerIndexMax = (photosLength / figureNumber) - 1; // For counting how
 
 // Function that should run when the page opened
 createArray(containerIndex, figureNumber);
+addFigures(albumContainer, figureNumber);
+
 
 // EVENT DECLARATION
 nextButton.addEventListener("click", nextButtonDo);
 previousButton.addEventListener("click", previousButtonDo);
+window.addEventListener("resize", changeFigureNumber);
 
 
 // FUNCTION:
@@ -68,43 +75,140 @@ previousButton.addEventListener("click", previousButtonDo);
 // Next button function is for iterate to next data
 // This function used for iterate the *photos*(CHANGEABLE ADDABLE DATA) Data Array based on *figureNumber*(CHANGEABLE ADDABLE DATA)
 function nextButtonDo() {
+    // Force reflow to restart the animation
+    albumContainer.style.animationName = "fade-out1";
+
+    // Delete the last container index
+    if (albumContainer.innerHTML) {
+        albumContainer.innerHTML = "";
+    }
+
     // Adding the *containerIndex*(GLOBAL VARIABLE) if the container index is less than *containerIndexMax*()
     if (containerIndex < containerIndexMax) {
         containerIndex++; // This updates the global variable directly
     }
 
-    // Desctibed at the FUNCTION list
+    // Described at the FUNCTION list (return container Array
     filterArray();
+
+    // Add new container to *albumContainer*(GLOBAL VARIABLE) based on *containerArray*(GLOBAL VARIABLE) value
+    addFigures(albumContainer, figureNumber);
+
+    // Force reflow to restart the animation
+    void albumContainer.offsetWidth;
+    // albumContainer.style.display = "flex";
+    // addTransition(albumContainer, 1);
+    albumContainer.style.animationName = "fade-in1";
 }
 
 // Previous button function is for iterate to previous data
 // This function used for iterate the *photos*(CHANGEABLE ADDABLE DATA) Data Array based on *figureNumber*(CHANGEABLE ADDABLE DATA)
 function previousButtonDo() {
+    // Force reflow to restart the animation
+    albumContainer.style.animationName = "fade-out1";
+
+    // Delete the last container index
+    if (albumContainer.innerHTML) {
+        albumContainer.innerHTML = "";
+    }
+
     if (containerIndex > 0) {
         containerIndex--;
     }
 
-    // Desctibed at the FUNCTION list
+    // Described at the FUNCTION list
     filterArray();
+
+    // Add new container to *albumContainer*(GLOBAL VARIABLE) based on *containerArray*(GLOBAL VARIABLE) value
+    addFigures(albumContainer, figureNumber);
+    // Set album container display to flex and fade in
+
+    // Force reflow to restart the animation
+    void albumContainer.offsetWidth;
+    // albumContainer.style.display = "flex";
+    // addTransition(albumContainer, 1);
+    albumContainer.style.animationName = "fade-in2";
 }
 
-// Function for storing the data on *containerArray*(GLOBAL VARIABLE) based on the first container
+// Function for storing the data on *containerArray*(GLOBAL VARIABLE) based on the first *containerIndex*(GLOBAL VARIABLE) multiplied by *figureNumber*(CHANGEABLE ADDABLE DATA)
 function createArray(index, number) {
-    let indexVal = index * figureNumber;
+    let indexVal = index * figureNumber; // Multiplying 
     containerArray.push(indexVal);
-    for (let i = 0; i < number - 1; i++) {
-        indexVal++;
+    for (let i = 0; i < number - 1; i++) { // Looping for add IndexVal based on *figureNumber*(CHANGEABLE ADDABLE DATA)
+        indexVal++; // Add indexVal by one
         indexVal < photosLength ? containerArray.push(indexVal) : containerArray = containerArray;
     }
-    h2.innerHTML = containerArray;
 }
 
+// Function for delete the previous array
 function filterArray() {
+    // If container array is length is 0 (NO DATA)
     if (containerArray.length === 0) {
+        // Then store the data in the array use createArray Function
         createArray(containerIndex, figureNumber);
+        // Else, if the array consist a data
     } else {
+        // Then remove the data first
         containerArray.length = 0;
+        // And then store the data
         createArray(containerIndex, figureNumber);
     }
 }
 
+function addFigures(containerTarget, figureNumber) {
+    for (let i = 0; i < figureNumber; i++) {
+        addFigureImageandComment(containerTarget, containerArray[i])
+    };
+}
+
+function addFigureImageandComment(containerTarget, index) {
+    // containerTarget.classList.add("fade-in");
+    containerTarget.innerHTML += `
+    <figure>
+        <img id="album-image-${index}" src="./image/${photos[index].name}.jpg" alt="Photos database">
+        <figcaption>${photos[index].comment}</figcaption>
+    </figure>`
+        ;
+
+}
+
+function changeFigureNumber() {
+    if (window.innerWidth < 500) {
+        figureNumber = 2;
+
+        // Delete the last container index
+        if (albumContainer.innerHTML) {
+            albumContainer.innerHTML = "";
+        }
+
+        if (containerIndex > 0) {
+            containerIndex--;
+        }
+
+        // Described at the FUNCTION list
+        filterArray();
+
+        // Add new container to *albumContainer*(GLOBAL VARIABLE) based on *containerArray*(GLOBAL VARIABLE) value
+        addFigures(albumContainer, figureNumber);
+        // Set album container display to flex and fade in
+
+    } else {
+        figureNumber = 3;
+        // Delete the last container index
+        if (albumContainer.innerHTML) {
+            albumContainer.innerHTML = "";
+        }
+
+        if (containerIndex > 0) {
+            containerIndex--;
+        }
+
+        // Described at the FUNCTION list
+        filterArray();
+
+        // Add new container to *albumContainer*(GLOBAL VARIABLE) based on *containerArray*(GLOBAL VARIABLE) value
+        addFigures(albumContainer, figureNumber);
+        // Set album container display to flex and fade in
+
+    }
+}

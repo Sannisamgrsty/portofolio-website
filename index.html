@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Pattaya&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -14,13 +19,13 @@
         <nav class="navbar">
             <ul>
                 <li>About</li>
-                <li>Gallery</li>
+                <li><a href="#album-gal">Gallery</a></li>
                 <li>Contact</li>
                 <li>Message</li>
             </ul>
         </nav>
         <figure id="photo-profil">
-            <img class="profile" src="./image/profil-1.jpg" alt="my-photos">
+            <img src="./image/profil-1.jpg" alt="my-photos">
         </figure>
     </header>
 
@@ -28,7 +33,7 @@
         <section id="title">
             <div>
                 <h1>My Journey</h1>
-                <p>Hello guys this is my Journey. Happy scrolling</p>
+                <p>Hello guys this page is my portofolio and my lovely travel journey. <em>Happy scrolling</em></p>
             </div>
             <figure>
                 <img src="./image/h1-head.jpg" alt="Human looking at the sea.">
@@ -37,9 +42,11 @@
         <section id="gallery">
             <h2>Gallery</h2>
             <div id="album-gal">
-                <button class="scroll-button" id="previous-button"></button>
-                <div id="container-1">
-                    <figure>
+                <div class="scroll-button" id="previous-button">
+                    <div id="triangle-left"></div>
+                </div>
+                <div id="album-container">
+                    <!-- <figure>
                         <img id="album-image-1" src="./image/image-1.jpg" alt="Album image">
                         <figcaption>dummy</figcaption>
                     </figure>
@@ -50,23 +57,11 @@
                     <figure>
                         <img id="album-image-3" src="./image/image-3.jpg" alt="Album image">
                         <figcaption>dummy</figcaption>
-                    </figure>
+                    </figure> -->
                 </div>
-                <div id="container-2">
-                    <figure>
-                        <img id="album-image-1" src="./image/image-4.jpg" alt="Album image">
-                        <figcaption>dummy</figcaption>
-                    </figure>
-                    <figure>
-                        <img id="album-image-2" src="./image/image-5.jpg" alt="Album image">
-                        <figcaption>dummy</figcaption>
-                    </figure>
-                    <figure>
-                        <img id="album-image-3" src="./image/image-6.jpg" alt="Album image">
-                        <figcaption>dummy</figcaption>
-                    </figure>
+                <div class="scroll-button" id="next-button">
+                    <div id="triangle-right"></div>
                 </div>
-                <button class="scroll-button" id="next-button"></button>
             </div>
         </section>
     </main>
